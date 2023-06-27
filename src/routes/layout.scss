@@ -1,0 +1,34 @@
+* {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+}
+
+body {
+	margin: auto;
+	padding: 20px;
+	height: 100vh;
+	box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #181818;
+		color: #ccc;
+	}
+}
+@media (prefers-color-scheme: light) {
+	body {
+		background-color: #fff;
+		color: #000;
+	}
+}
+@media screen and (max-width: 359px) {
+	body {
+		min-width: 359px;
+	}
+}
+@media screen and (min-width: 640px) {
+	body {
+		max-width: 640px;
+	}
+}
