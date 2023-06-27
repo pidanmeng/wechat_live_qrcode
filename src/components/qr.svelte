@@ -3,8 +3,10 @@
 	import config from '$const/config';
 	import { onMount } from 'svelte';
 	import QRCode from 'easyqrcodejs';
-	let node: any = null;
 
+	export let slug;
+
+	let node: any = null;
 	let prefersDarkMode = globalThis?.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
 	onMount(() => {
@@ -15,7 +17,7 @@
 		};
 		new QRCode(node, options);
 	});
-	let pageData = Reflect.get(config, $page.params.slug) || {};
+	let pageData = Reflect.get(config, slug) || {};
 	let codeValue = pageData.url;
 </script>
 
@@ -122,12 +124,6 @@
 							text-align: start;
 							width: 100%;
 						}
-					}
-				}
-				.qrcode {
-					canvas {
-						border-radius: 0.5rem;
-						overflow: hidden;
 					}
 				}
 			}
