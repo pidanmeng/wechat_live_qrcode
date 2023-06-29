@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
   deploy:
@@ -36,3 +34,26 @@ jobs:
         with:
           folder: build # The folder the action should deploy.
           branch: gh-pages
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github organization repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: 'github/pidanmeng'
+          dst: 'gitee/pidanmoe'
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token:  ${{ secrets.GITEE_TOKEN }}
+          mappings: "wechat_live_qrcode=>wechat_live_group"
+          static_list: "wechat_live_qrcode"
+          force_update: true
+          debug: true
+          
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: pidanmoe
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: pidanmoe/wechat_live_group
+          branch: gh-pages
+    needs: [deploy]
