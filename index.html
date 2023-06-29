@@ -5,46 +5,47 @@
   <meta charset="utf-8" />
   <link rel="icon" href="./favicon.png" />
   <meta name="viewport" content="width=device-width" />
-  
-		<link href="./_app/immutable/assets/0.c01e3fbf.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.e99589de.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.a7e64d23.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.5c0d1614.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.5ac83d74.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.2831ad20.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.243aeee3.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.601299d9.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.14d1c9c3.js">
+
+  <link href="./_app/immutable/assets/0.c01e3fbf.css" rel="stylesheet">
+  <link rel="modulepreload" href="./_app/immutable/entry/start.e99589de.js">
+  <link rel="modulepreload" href="./_app/immutable/chunks/scheduler.a7e64d23.js">
+  <link rel="modulepreload" href="./_app/immutable/chunks/singletons.5c0d1614.js">
+  <link rel="modulepreload" href="./_app/immutable/chunks/paths.5ac83d74.js">
+  <link rel="modulepreload" href="./_app/immutable/entry/app.2831ad20.js">
+  <link rel="modulepreload" href="./_app/immutable/chunks/index.243aeee3.js">
+  <link rel="modulepreload" href="./_app/immutable/nodes/0.601299d9.js">
+  <link rel="modulepreload" href="./_app/immutable/nodes/2.14d1c9c3.js">
 </head>
 
 <body data-sveltekit-preload-data="hover">
-  <div style="display: contents">  <div id="app" class="svelte-2fkiwi"> </div> 
-			
-			<script>
-				{
-					__sveltekit_1jdclax = {
-						base: new URL(".", location).pathname.slice(0, -1),
-						env: {}
-					};
+  <div style="display: contents">
+    <div id="app" class="svelte-2fkiwi"> </div>
 
-					const element = document.currentScript.parentElement;
+    <script>
+      {
+        __sveltekit_1jdclax = {
+          base: new URL(".", location).pathname.slice(0, -1),
+          env: {}
+        };
 
-					const data = [null,null];
+        const element = document.currentScript.parentElement;
 
-					Promise.all([
-						import("./_app/immutable/entry/start.e99589de.js"),
-						import("./_app/immutable/entry/app.2831ad20.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2],
-							data,
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
+        const data = [null, null];
+
+        Promise.all([
+          import("./_app/immutable/entry/start.e99589de.js"),
+          import("./_app/immutable/entry/app.2831ad20.js")
+        ]).then(([kit, app]) => {
+          kit.start(app, element, {
+            node_ids: [0, 2],
+            data,
+            form: null,
+            error: null
+          });
+        });
+      }
+    </script>
+  </div>
 </body>
 
 </html>
