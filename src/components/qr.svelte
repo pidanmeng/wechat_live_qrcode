@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import config from '$const/config';
 	import { onMount } from 'svelte';
 	import QRCode from 'easyqrcodejs';
@@ -8,14 +7,20 @@
 
 	let node: any = null;
 	let prefersDarkMode = globalThis?.matchMedia?.('(prefers-color-scheme: dark)').matches;
+	let qrCode =
+		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYPgPAAEEAQBwIGULAAAAAElFTkSuQmCC';
 
 	onMount(() => {
+		node = document?.createElement('div');
 		const options = {
 			text: codeValue,
 			colorDark: prefersDarkMode ? '#f8f8f8' : '#181818',
-			colorLight: '#00000000'
+			colorLight: '#00000000',
+			onRenderingEnd(_qrCodeOptions: any, dataURL: string) {
+				qrCode = dataURL;
+			}
 		};
-		new QRCode(node, options);
+		const code = new QRCode(node, options);
 	});
 	let pageData = Reflect.get(config, slug) || {};
 	let codeValue = pageData.url;
@@ -35,7 +40,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div bind:this={node} class="qrcode" />
+				<img src={qrCode} alt="二维码" />
 			</div>
 			<div class="card-footer">{pageData.tips}</div>
 		</div>
