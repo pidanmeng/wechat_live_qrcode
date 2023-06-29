@@ -2,6 +2,7 @@
 	import config from '$const/config';
 	import { onMount } from 'svelte';
 	import QRCode from 'easyqrcodejs';
+	import type { pageData } from '$const/config';
 
 	export let slug;
 
@@ -9,9 +10,21 @@
 	let prefersDarkMode = globalThis?.matchMedia?.('(prefers-color-scheme: dark)').matches;
 	let qrCode =
 		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY2BgYPgPAAEEAQBwIGULAAAAAElFTkSuQmCC';
+	let pageData = Reflect.get(config, slug) as pageData;
+	const useFallback =
+		Date.now() > new Date(pageData.createTime).getTime() + 1000 * 60 * 60 * 24 * 7;
+	if (useFallback) {
+		pageData.url = pageData.fallbackUrl;
+		pageData.logo = pageData.fallbackLogo;
+		pageData.title = pageData.fallbackTitle;
+		pageData.description = pageData.fallbackDescription;
+		pageData.tips = pageData.fallbackTips;
+	}
+	let codeValue = pageData.url;
 
 	onMount(() => {
-		node = document?.createElement('div');
+		node = document.createElement('div');
+		document.title = pageData.pageTitle;
 		const options = {
 			text: codeValue,
 			colorDark: prefersDarkMode ? '#f8f8f8' : '#181818',
@@ -22,12 +35,9 @@
 		};
 		const code = new QRCode(node, options);
 	});
-	let pageData = Reflect.get(config, slug) || {};
-	let codeValue = pageData.url;
 </script>
 
 <div class="page">
-	<div class="header">{pageData.title}</div>
 	<div class="body">
 		<div class="card">
 			<div class="card-header">
