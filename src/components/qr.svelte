@@ -77,9 +77,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		.header {
-			flex: none;
-		}
+
 		.body {
 			flex: 1;
 			display: flex;
