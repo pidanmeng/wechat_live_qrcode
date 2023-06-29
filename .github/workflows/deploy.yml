@@ -2,7 +2,7 @@ name: syncToGitee
 on:
   push:
     branches:
-      - pages
+      - gh-pages
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
@@ -25,4 +25,4 @@ jobs:
           gitee-username: pidanmoe
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: pidanmoe/wechat_live_group
-          branch: pages
+          branch: gh-pages
