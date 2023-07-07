@@ -20,7 +20,7 @@ const config: Record<string, pageData> = {
 		title: '泊寓草桥桌游社',
 		description: '每周组局！',
 		tips: '长按或扫描二维码加群',
-		url: 'https://weixin.qq.com/g/AQYAAC564Xz6ZMw_IRbB905weQCMETeCoi1_xHPbVSq9C-BPyQ-za5x2AjktVZJV',
+		url: 'https://weixin.qq.com/g/AQYAAGq4omhneSq70QIRD7pyl8lCHYgY5LNI3tj7lTDAwDj45n6dwvPRoS5zYilA',
 		createTime: '2023-06-29',
 		logo: LogoDesktop,
 		fallbackUrl: 'https://u.wechat.com/ECbTjoPEgTbwhLDWGPrjr4s',
