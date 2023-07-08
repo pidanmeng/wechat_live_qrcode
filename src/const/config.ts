@@ -21,7 +21,7 @@ const config: Record<string, pageData> = {
 		description: '每周组局！',
 		tips: '长按或扫描二维码加群',
 		url: 'https://weixin.qq.com/g/AQYAAGq4omhneSq70QIRD7pyl8lCHYgY5LNI3tj7lTDAwDj45n6dwvPRoS5zYilA',
-		createTime: '2023-06-29',
+		createTime: '2023-07-08',
 		logo: LogoDesktop,
 		fallbackUrl: 'https://u.wechat.com/ECbTjoPEgTbwhLDWGPrjr4s',
 		fallbackTitle: '皮蛋萌',
